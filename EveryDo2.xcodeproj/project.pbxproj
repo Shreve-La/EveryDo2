@@ -14,6 +14,7 @@
 		EDB92C5C1F15264F00F94989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB92C5A1F15264F00F94989 /* Main.storyboard */; };
 		EDB92C5E1F15264F00F94989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDB92C5D1F15264F00F94989 /* Assets.xcassets */; };
 		EDB92C611F15264F00F94989 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB92C5F1F15264F00F94989 /* LaunchScreen.storyboard */; };
+		EDB92C6A1F15288E00F94989 /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB92C691F15288E00F94989 /* ToDo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		EDB92C5D1F15264F00F94989 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDB92C601F15264F00F94989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDB92C621F15264F00F94989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDB92C681F15288E00F94989 /* ToDo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDo.h; sourceTree = "<group>"; };
+		EDB92C691F15288E00F94989 /* ToDo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,8 @@
 				EDB92C521F15264F00F94989 /* AppDelegate.m */,
 				EDB92C541F15264F00F94989 /* MasterViewController.h */,
 				EDB92C551F15264F00F94989 /* MasterViewController.m */,
+				EDB92C681F15288E00F94989 /* ToDo.h */,
+				EDB92C691F15288E00F94989 /* ToDo.m */,
 				EDB92C571F15264F00F94989 /* DetailViewController.h */,
 				EDB92C581F15264F00F94989 /* DetailViewController.m */,
 				EDB92C5A1F15264F00F94989 /* Main.storyboard */,
@@ -156,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDB92C6A1F15288E00F94989 /* ToDo.m in Sources */,
 				EDB92C531F15264F00F94989 /* AppDelegate.m in Sources */,
 				EDB92C561F15264F00F94989 /* MasterViewController.m in Sources */,
 				EDB92C501F15264F00F94989 /* main.m in Sources */,
