@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priorityLabel;
 
-- (void)prepareMasterCell:(ToDo*)toDo;
+- (void)prepareCellWhenCompleted:(ToDo*)toDo;
+- (void)prepareCellWhenInComplete:(ToDo*)toDo;
 
 @end

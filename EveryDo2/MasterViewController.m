@@ -13,7 +13,7 @@
 
 @interface MasterViewController ()<UITableViewDataSource, UITableViewDelegate>
 
-@property NSMutableArray *objects;
+@property NSMutableArray <ToDo*>*objects;
 
 @end
 
@@ -82,10 +82,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ToDoMasterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    [cell  prepareMasterCell:self.objects[indexPath.row]];
+    ToDo *currentObject = self.objects[indexPath.row];
+    bool complete = currentObject.completed;
     
-    
-    return cell;
+  if (complete)
+   {
+       [cell  prepareCellWhenCompleted:self.objects[indexPath.row]];
+    }else{
+        [cell prepareCellWhenInComplete:self.objects[indexPath.row]];
+    }
+        return cell;
 }
 
 
@@ -109,7 +115,7 @@
     NSArray *titles = @[@"Buy Cake", @"Put up streamers", @"Assemble loot bags", @"Send Invitations"];
     NSArray *descriptions = @[@"Vanilla Ice Cream Cake with Chocolate Frosting",@"Get Blue, Black, White and Yellow Streamers",@"Each person gets Pokemon, Candy, and Baseball Cards",@"send to 15 Guests"];
     NSArray<NSNumber*> *priority = @[@1,@1,@2, @3];
-    NSArray *completed = @[@NO, @NO, @NO, @YES];
+    NSArray *completed = @[[NSNumber numberWithBool:NO],[NSNumber numberWithBool:NO],[NSNumber numberWithBool:NO],[NSNumber numberWithBool:YES]];
     
     
     [titles enumerateObjectsUsingBlock:^(NSString*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -117,7 +123,7 @@
         newDo.title = titles[idx];
         newDo.toDoDescriptions = descriptions[idx];
         newDo.priority = priority[idx];
-        newDo.completed = completed[idx];
+        newDo.completed = [completed[idx] boolValue];
         [self.objects addObject:newDo];
     }];
     

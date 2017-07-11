@@ -21,31 +21,29 @@
     // Configure the view for the selected state
 }
 
-- (void)prepareMasterCell:(ToDo*)toDo{
-//    if(!toDo.completed) {
+- (void)prepareCellWhenCompleted:(ToDo*)toDo{
+
+       NSDictionary* attributes = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]};
+       
+       NSAttributedString* attributedTitle = [[NSAttributedString alloc] initWithString:toDo.title attributes:attributes];
+       NSAttributedString* attributedDescription = [[NSAttributedString alloc] initWithString:toDo.toDoDescriptions attributes:attributes];
+       NSAttributedString* attributedPriorityLevel = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",toDo.priority] attributes:attributes];
+       
+       self.titleLabel.attributedText = attributedTitle;
+       self.descriptionLabel.attributedText = attributedDescription;
+       self.priorityLabel.attributedText = attributedPriorityLevel;
+
+}
+
+- (void)prepareCellWhenInComplete:(ToDo*)toDo{
         self.titleLabel.text = toDo.title;
         self.descriptionLabel.text = toDo.toDoDescriptions;
         self.priorityLabel.text = [NSString stringWithFormat:@"%@", toDo.priority];
-//    }else{
-//        NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:toDo.title];
-//        [attributeString addAttribute:NSStrikethroughStyleAttributeName
-//                                value:@2
-//                                range:NSMakeRange(0, [attributeString length])];
-//        self.titleLabel.attributedText = attributeString;
-//        
-//        attributeString = [[NSMutableAttributedString alloc] initWithString:toDo.description];
-//        [attributeString addAttribute:NSStrikethroughStyleAttributeName
-//                                value:@2
-//                                range:NSMakeRange(0, [attributeString length])];
-//        self.descriptionLabel.attributedText = attributeString;
-//        
-//        attributeString = [[NSMutableAttributedString alloc] initWithString:[toDo.priority stringValue]];
-//        [attributeString addAttribute:NSStrikethroughStyleAttributeName
-//                                value:@2
-//                                range:NSMakeRange(0, [attributeString length])];
-//        self.priorityLabel.attributedText = attributeString;
-//    }
-}
-
-
+    }
+       
+       
+       
+       
+       
+       
 @end
