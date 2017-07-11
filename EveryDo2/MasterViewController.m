@@ -8,8 +8,10 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "ToDo.h"
 
 @interface MasterViewController ()
+@property (strong, nonatomic) NSMutableArray *allToDos;
 
 @property NSMutableArray *objects;
 @end
@@ -18,6 +20,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.allToDos = [NSMutableArray new];
+    [self makeToDoItems];
+
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
@@ -93,6 +101,27 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
+
+
+- (void)makeToDoItems{
+    NSArray *titles = @[@"Buy Cake", @"Put up streamers", @"Assemble loot bags", @"Send Invitations"];
+    NSArray *descriptions = @[@"Vanilla Ice Cream Cake with Chocolate Frosting",@"Get Blue, Black, White and Yellow Streamers",@"Each person gets Pokemon, Candy, and Baseball Cards",@"send to 15 Guests"];
+    NSArray<NSNumber*> *priority = @[@1,@1,@2, @3];
+    NSArray *completed = @[@NO, @NO, @NO, @YES];
+    
+    
+    [titles enumerateObjectsUsingBlock:^(NSString*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        ToDo *newDo = [[ToDo alloc] init];
+        newDo.title = titles[idx];
+        newDo.toDoDescriptions = descriptions[idx];
+        newDo.priority = priority[idx];
+        newDo.completed = completed[idx];
+        [self.allToDos addObject:newDo];
+    }];
+    
+}
+
+
 
 
 @end
