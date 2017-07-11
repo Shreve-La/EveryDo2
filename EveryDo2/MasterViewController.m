@@ -9,11 +9,12 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "ToDo.h"
+#import "ToDoMasterTableViewCell.h"
 
-@interface MasterViewController ()
-@property (strong, nonatomic) NSMutableArray *allToDos;
+@interface MasterViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property NSMutableArray *objects;
+
 @end
 
 @implementation MasterViewController
@@ -21,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.allToDos = [NSMutableArray new];
+    self.objects = [NSMutableArray new];
     [self makeToDoItems];
 
     
@@ -79,10 +80,11 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    ToDoMasterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    
+    [cell  prepareMasterCell:self.objects[indexPath.row]];
+    
+    
     return cell;
 }
 
@@ -116,7 +118,7 @@
         newDo.toDoDescriptions = descriptions[idx];
         newDo.priority = priority[idx];
         newDo.completed = completed[idx];
-        [self.allToDos addObject:newDo];
+        [self.objects addObject:newDo];
     }];
     
 }
